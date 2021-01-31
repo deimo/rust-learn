@@ -1,0 +1,20 @@
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+// 使用use的绝对路径
+// use crate::front_of_house::hosting;
+
+// 使用use的绝对路径
+use front_of_house::hosting;
+
+/**
+ * 使用use导入函数路径时，通常引入至其父作用的路径
+ * 而使用use导入struct或者enum时通常引入其本身的完整路径
+ */
+
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+}

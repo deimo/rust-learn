@@ -1,0 +1,26 @@
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+/*
+ * 使用pub use 重导出：可以使用此技术，调整对外暴露的代码
+ * - 讲该条目引入作用域
+ * - 该条目可以被外部代码引入到它们的作用域 
+ */
+pub use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+}
+
+/*
+ * 使用外部包
+ *  - 在Cargo.toml 添加外部包
+ *  - 使用use引入
+ * 
+ *  - 标准库 std 也被当做是外部包
+ *  - 不需要修改Cargo.toml来包含 std
+ *  - 但是需要使用use 将std中的特定条目引入当前作用域
+ */

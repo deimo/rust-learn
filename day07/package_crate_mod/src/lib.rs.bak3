@@ -1,0 +1,42 @@
+fn serve_order() {}
+
+
+// 演示使用 super关键字 
+pub mod back_of_house {
+    fn fix_incorrect_order() {
+        cook_order();
+        // super::serve_order();
+        // crate::serve_order();
+    }
+
+    fn cook_order() {}
+
+    // 使用pub关键字定义公共结构体，但默认情况下结构体的成员是 private 的
+    pub struct Breakfast {
+        pub toast: String,
+        seasonal_fruit: String
+    }
+
+    impl Breakfast {
+        pub fn summer(toast: &str) -> Breakfast {
+            Breakfast {
+                toast: String::from(toast),
+                seasonal_fruit: String::from("peaches"),
+            }
+        }
+    }
+
+    // pub enum: 公共枚举中的变体都是公共的
+    pub enum Appetizer {
+        Soup,
+        Salad
+    }
+}
+
+pub fn eat_at_restaurant() {
+    let mut meal = back_of_house::Breakfast::summer("Rye");
+    // 可对公共字段直接进行修改
+    meal.toast = String::from("Wheat");
+    println!("I'd like {} toast please", meal.toast);
+    meal.seasonal_fruit = String::from("blueberries");
+}
