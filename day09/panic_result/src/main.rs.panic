@@ -1,0 +1,20 @@
+/**
+ * Rust错误分类：
+ *  - 可恢复错误：例如文件找不到
+ *     - 使用Result<T, E>处理
+ *  - 不可恢复的错误：bug，例如角标越界
+ *     - 不可恢复错误：panic!宏
+ * 
+ * 显示回溯信息的环境变量：
+ * - Windows平台：set RUST_BACKTRACE=1 && cargo run
+ * - Mac/Linux平台: export RUST_BACKTRACE=1 && cargo run
+ * 
+ * 一般地：为了获取带有调试信息的回溯，必须启用调试符号：即运行时不带有 「--release」
+ */
+fn main() {
+    // 一个最简单的触发panic的例子：直接调用panic宏
+    // panic!("crash and burn");
+
+    let v = vec![1, 2, 3];
+    v[99];
+}

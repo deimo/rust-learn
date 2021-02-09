@@ -1,0 +1,13 @@
+[package]
+name = "panic_result"
+version = "0.1.0"
+authors = ["jadger <jadger@163.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+# 生产环境中，立即中止调用栈
+[profile.release]
+panic='abort'
