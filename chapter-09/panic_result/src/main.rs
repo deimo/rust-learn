@@ -98,3 +98,10 @@ fn read_username_file2() -> Result<String, io::Error> {
     f.read_to_string(&mut s)?;
     Ok(s)
 }
+
+
+fn read_username_file3() -> Result<String, io::Error> {
+    let mut s = String::new();
+    File::open("hello.txt")?.read_to_string(&mut s)?;
+    Ok(s)
+}

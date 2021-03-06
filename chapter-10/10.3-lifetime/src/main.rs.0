@@ -1,0 +1,19 @@
+use std::fmt::Display;
+
+fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
+where
+    T: Display,
+{
+    println!("おめでとうございます! {}", ann);
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+fn main() {
+    let a = "新年快乐";
+    let b = "🐂年大吉";
+    let c = longest_with_an_announcement(&a, &b, 2021);
+    println!("{}", c);
+}
