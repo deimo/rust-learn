@@ -1,0 +1,51 @@
+use std::collections::vec_deque;
+
+fn main() {
+    /*例1 */
+    // let v1 = vec![1, 2, 3];
+    // let v = Vec::new();
+    // let v1_iter = v1.iter();
+    // for val in v1_iter {
+    //     println!("got: {}", val);
+    // }
+
+    /*例2 */
+    // let v1 = vec![1, 2, 3];
+    // iter: 不可变引用迭代，指向元素的不可变引，不是迭代器本身
+    // into_iter: 创建的迭代器会获得所有权
+    // iter_mut: 迭代可变的引用
+    
+    // let mut v1_iter = v1.iter();
+    // assert_eq!(v1_iter.next(), Some(&1));
+    // assert_eq!(v1_iter.next(), Some(&2));
+    // assert_eq!(v1_iter.next(), Some(&3));
+
+  
+
+
+}
+
+#[cfg(test)]
+mod tests {
+    use std::{u32, vec};
+
+    /* 消耗迭代器的方法: 消耗型适配器*/
+    // #[test]
+    fn iterrator_sum() {
+        let v1 = vec![1, 2, 3];
+        let v1_iter = v1.iter();
+
+        let total:u32 = v1_iter.sum();
+        assert_eq!(total, 6);
+    }
+
+    /* 产生迭代器的方法: 迭代器适配器*/
+    #[test]
+    fn iterator_map() {
+        let v1 = vec![1, 2 ,3];
+        
+        let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
+        assert_eq!(v2, vec![2, 3, 4])
+
+    }
+}
