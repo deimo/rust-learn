@@ -1,0 +1,38 @@
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Writing(String),
+    ChangeColor(Color),
+}
+
+enum Color {
+    Rgb(i32, i32, i32),
+    Hsv(i32, i32, i32),
+}
+
+#[derive(Debug)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+fn main() {
+    // 配嵌套的解构或枚举类型
+    let msg = Message::ChangeColor(Color::Hsv(0, 160, 225));
+
+    match msg {
+        Message::ChangeColor(Color::Rgb(r, g, b)) => {
+            println!("Change the color to red {}, green {}, and blue {}", r, g, b);
+        }
+        Message::ChangeColor(Color::Hsv(h, s, v)) => {
+            println!(
+                "Change the color to hue {}, saturation {} and value {}",
+                h, s, v
+            );
+        }
+        _ => (),
+    }
+
+    // 解构 struct和tuple
+    // let ((feet, inches), Point { x, y }) = ((3, 10), Point { x: 3, y: -10 });
+    // println!("feet: {}, inches: {}, x: {}, y: {}", feet, inches, x, y);
+}

@@ -1,0 +1,32 @@
+fn main() {
+    // while let 中的模式
+    let mut stack = Vec::new();
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+
+    while let Some(pop) = stack.pop() {
+        println!("{}", pop);
+    }
+
+    // for循环中的模式
+    // for循环中模式就是紧随For关键字后的值
+    let v = vec!['a', 'b', 'c'];
+    for (index, value) in v.iter().enumerate() {
+        println!("{} is at index {}", value, index);
+    }
+
+    // let 语句中的模式
+    /// let pattern = expression
+    let a = 5;
+    let (x, y, z) = (1, 2, 3);
+
+    let point = (3, 5);
+    print_coordinates(&point);
+}
+// 函数参数中的模式
+fn foo(x: i32) {}
+
+fn print_coordinates(&(x, y): &(i32, i32)) {
+    println!("current locaotion: ({}, {})", x, y);
+}

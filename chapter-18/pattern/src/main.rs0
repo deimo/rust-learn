@@ -1,0 +1,21 @@
+fn main() {
+    // if let 表达式的使用
+    let favorite_color: Option<&str> = None;
+    let is_tuesday = false;
+
+    let age: Result<u8, _> = "34".parse();
+
+    if let Some(color) = favorite_color {
+        println!("useing your favorite color, {}, as the background", color);
+    } else if is_tuesday {
+        println!("Thesday is green day!");
+    } else if let Ok(age) = age {
+        if age > 30 {
+            println!("Useing purple as background");
+        } else {
+            println!("Useing orange as background color");
+        }
+    } else {
+        println!("Useing blue as background color");
+    }
+}
