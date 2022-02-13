@@ -1,0 +1,67 @@
+/* Deref Trait */
+/// 实现Deref Trait 使我们可以自定义解引用运算符 * 的行为
+/// 通过实现Deref，智能指针可像常规引用一样来处理
+
+use std::ops::Deref;
+fn main() {
+    // 解引用运算符 *
+
+    // 常规解引用
+    let x = 5;
+    let y = &x;
+    assert_eq!(5, x);
+    assert_eq!(5, *y);
+
+    // Box<T>的解引用
+    let x = 5;
+    let y = Box::new(x);
+    assert_eq!(5, x);
+    assert_eq!(5, *y);
+
+    // MyBox<T>的解引用
+    let x = 5;
+    let y =MyBox::new(x);
+    assert_eq!(5, x);
+    assert_eq!(5, *y);  // --> *y <=> *(y.deref()) 
+    
+    /* 
+        隐式解引用转化 （Deref Coercion）
+        1. 当某类型的引用传递给函数或方法时，它的类型与定义参数类型不匹配，[Deref Coercion]就会自动发生
+        2. 此过程发生在编译时，不会有额外的运行时开销
+    */
+    let m = MyBox::new(String::from("Rust"));
+    hello(&m);// 可以编译通过？!
+     /*
+        隐式解引用转化过程：
+        &m: &MyBox<String>
+        第一次调用deref &m.deref() --> &String
+        第二次调用deref &String.deref() --> &str
+        如果没有隐式解引用，调用过程将为：
+        hello(&(*m)[..])
+     */
+
+}
+
+fn hello(name: &str) {
+    println!("Hello, {}", name);
+}
+
+
+
+/* 定义一个自己的Box<T> */
+struct MyBox<T>(T);
+
+impl<T> MyBox<T> {
+    fn new(x: T) -> MyBox<T> {
+        MyBox(x)
+    }
+}
+
+impl<T> Deref for MyBox<T> {
+    type Target = T;
+    
+    // 因为返回了一个引用，所以可以"解引用"
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
