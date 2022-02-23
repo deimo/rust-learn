@@ -1,0 +1,13 @@
+use std::sync::Mutex;
+
+/// 使用共享状态Mutex实现多线程 
+fn main() {
+    // 一个最简单的Mutex的使用示例
+    let m = Mutex::new(5);
+
+    {
+        let mut num= m.lock().unwrap();
+        *num = 6;
+    }
+    println!("m = {:?}", m);
+}
