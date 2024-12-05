@@ -70,7 +70,7 @@ fn exec2<F: Fn()>(f: F) {
     f()
 }
 
-fn exec4<'a, F: FnMut(&'a str) -> String>(mut f: F) {
+fn exec4<'a, F: FnOnce(&'a str) -> String>(mut f: F) {
     f("hello");
 }
 

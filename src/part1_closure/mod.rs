@@ -14,8 +14,8 @@ pub fn demo1() -> i32 {
  * `demo2` 型推論の悪用サンプル
  */
 pub fn demo2() {
-    let example_closure = |x| x;
-    let s = example_closure(String::from("hello"));
+    // let example_closure = |x| x;
+    // let s = example_closure(String::from("hello"));
     // let n = example_closure(5);
 }
 
