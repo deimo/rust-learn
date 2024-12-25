@@ -63,3 +63,8 @@ pub fn demo5() {
         }
     };
 }
+
+#[test]
+fn demo6() {
+
+}
