@@ -100,12 +100,12 @@ fn test5() {
     let arr = vec![Box::new(1), Box::new(2)];
     // let first = arr[1];
     let arr_ = arr;
-    println!("arr.len: {}", arr.len());
+    // println!("arr.len: {}", arr.len());
     println!("arr_.len: {}", arr_.len());
 
 
     let arr2 = vec![String::from("hhhh"), String::from("aaa")];
-    let s = arr2[0];
+    // let s = arr2[0];
     let s2 = String::from("sss");
 
     let arr3 = vec!["aaa", "bbb"];
