@@ -9,3 +9,5 @@ pub mod part3;
 pub mod part4;
 
 pub mod part5;
+
+pub mod part6;

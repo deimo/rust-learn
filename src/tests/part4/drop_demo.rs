@@ -1,4 +1,4 @@
-#[cfg(test)]
+
 
 struct HasDrop1;
 struct HasDrop2;
