@@ -1,3 +1,6 @@
+use std::process::id;
+use std::slice;
+
 use std::{
     env::consts,
     slice::from_raw_parts,
@@ -72,7 +75,30 @@ fn test6() {
         println!("{}", *b2);
     }
     let c = Box::into_raw(a);
-    unsafe  {
+    unsafe {
         println!("{}", *c);
+    }
+}
+
+unsafe fn dangerous() {}
+
+#[test]
+fn test7() {
+    unsafe {
+        dangerous();
+    }
+}
+
+fn splite_at_mut(items: &mut [i32], mid: usize) -> (&mut [i32], &mut [i32]) {
+    let len = items.len();
+    let ptr = items.as_mut_ptr();
+
+    assert!(mid <= len);
+    // (&mut slice[..mid], &mut slice[mid..])
+    unsafe {
+        (
+            slice::from_raw_parts_mut(ptr, mid),
+            slice::from_raw_parts_mut(ptr.add(mid), len - mid),
+        )
     }
 }
