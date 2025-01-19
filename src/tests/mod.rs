@@ -11,3 +11,5 @@ pub mod part4;
 pub mod part5;
 
 pub mod part6;
+
+pub mod part7;
